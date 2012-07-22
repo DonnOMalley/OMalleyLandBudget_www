@@ -15,6 +15,6 @@ Requires
 ***
 Changelog
 =========
-**2012-07-22 - DØ** : *v0.2* : Updated for migration to New Server and added new Home Page
+**2012-07-22 - DØ** : *v0.2* : Updated for migration to New Server and added new Home Page, cleaned up README.md and added more information.
 <br />
-**2012 - DØ** : *Initial Release(0.1)*
+**2012 - DØ** : *Initial Release(0.1)* 	q
