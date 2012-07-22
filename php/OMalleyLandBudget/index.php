@@ -36,7 +36,7 @@
 	$startDate = $startYear . "-" . $startMonth . "-1";
 	$endDate = $endYear . "-" . $endMonth . "-1";
 	
-	$con = mysql_connect("192.168.2.113","web_user","Cinderella");
+	$con = mysql_connect("localhost","web_user","Cinderella");
 	if (!$con) {
 		die('Could not connect: ' . mysql_error());
 	}
@@ -306,19 +306,19 @@
 </head>
 <body>
 	<CENTER>
-		<H1>O'MalleyLand Budget</H1>
+		<H1><a href="http://www.omalleyland.com">O'MalleyLand Budget</a></H1>
 		<table>
 		<tr>
 		<td>
-		<a href="http://www.omalleyland.com:8088/createDebit.php" target="_blank">Create New Debit(s)</a>
+		<a href="http://www.omalleyland.com/php/OMalleyLandBudget/createDebit.php" target="_blank">Create New Debit(s)</a>
 		</td>
 		<td>
-		<a href="http://www.omalleyland.com:8088/createParentCategory.htm" target="_blank">Add New Category</a>
+		<a href="http://www.omalleyland.com/php/OMalleyLandBudget/createParentCategory.php" target="_blank">Add New Category</a>
 		</td>
 		</table>
 		
 		
-		<form method="post" action="index.php">
+		<form method="post" action="http://www.omalleyland.com/php/OMalleyLandBudget/index.php">
 			<table border=1>
 				<tr>
 					<td align="center"><b><u>Start Date</b></u></td>
@@ -384,7 +384,7 @@
 
 				    <select name="start_debit_year">
 						<?php
-				    	$con = mysql_connect("192.168.2.113","web_user","Cinderella");
+				    	$con = mysql_connect("localhost","web_user","Cinderella");
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
@@ -459,7 +459,7 @@
 				    </select>
 				    <select name="end_debit_year">
 						<?php
-				    	$con = mysql_connect("192.168.2.113","web_user","Cinderella");
+				    	$con = mysql_connect("localhost","web_user","Cinderella");
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
@@ -488,7 +488,7 @@
 		</form>
 		<h4>
 			<?php 
-				$con = mysql_connect("192.168.2.113","web_user","Cinderella");
+				$con = mysql_connect("localhost","web_user","Cinderella");
 				if (!$con) {
 					die('Could not connect: ' . mysql_error());
 				}
@@ -597,7 +597,7 @@
 							<td align="center"><u><b>Comment</b></u></td>
 							<td align="center"><u><b>Credit Card Purchase</b></u></td>
 						</TR>
-						<?php $con = mysql_connect("192.168.2.113","web_user","Cinderella");
+						<?php $con = mysql_connect("localhost","web_user","Cinderella");
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
