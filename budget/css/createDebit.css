@@ -1,0 +1,99 @@
+body {
+	background-color: #c0c0c0;
+}
+
+.styled-select select {
+	font-family: Arial, Sans-Serif;
+	font-size: 18px;
+	margin-bottom: 5px;
+	display: block;
+	padding: 4px;
+	border: solid 1px #85b1de;
+	width: 220px;
+        height: 50px;
+	background-color: #EDF2F7;
+	background: url(png/down_arrow.png) no-repeat right;
+}
+
+#inputArea input[type="text"], #inputArea textarea {
+	font-family: Arial, Sans-Serif;
+	font-size: 24px;
+	margin-bottom: 5px;
+	display: block;
+	padding: 4px;
+	border: solid 1px #85b1de;
+	width: 150px;
+        height: 50px;
+	background-color: #EDF2F7;
+}
+
+#inputArea2 input[type="text"], #inputArea2 textarea {
+	font-family: Arial, Sans-Serif;
+	font-size: 16px;
+	margin-bottom: 5px;
+	display: block;
+	padding: 4px;
+	border: solid 1px #85b1de;
+	width: 300px;
+        height: 35px;
+	background-color: #EDF2F7;
+}
+
+@font-face {
+  font-family: 'HighlandGothicFLFRegular';
+  src: url('fonts/HighlandGothicFLF.eot');
+  src: local('HighlandGothicFLF Regular'), local('HighlandGothicFLF'), url('fonts/HighlandGothicFLF.ttf') format('truetype');
+}
+
+input#submitButton {
+  /* General Properties */
+  height:34px;
+  width:250px;
+  border:1px solid #000;
+  background:#717a77;
+  /* CSS3 Styling */
+  background:-moz-linear-gradient(bottom, #0a0809, #0a0f0b 50%, #6d7673 50%, #afbdc0);
+  background:-webkit-gradient(linear, left bottom, left top, from(#0a0809), to(#afbdc0), color-stop(0.5, #0a0f0b), color-stop(0.5, #6d7673));
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  border-radius:20px;
+  -moz-box-shadow:0px 0px 7px rgba(255, 255,255, 0.5);
+  -webkit-box-shadow:0px 0px 7px rgba(255, 255,255, 0.5);
+  box-shadow:0px 0px 7px rgba(255, 255,255, 0.5);
+  /* Text Styling */
+  color:#ff7d00;
+  text-shadow:0px -1px 0px #000;
+  font-family:'HighlandGothicFLFRegular', Impact, 'Arial Black', sans-serif;
+  font-size:20px;
+  padding-bottom:5px;
+}
+
+input#submitButton:hover {
+  font-size:21px;
+  -moz-box-shadow:0px 0px 7px rgba(255, 255,255, 1);
+  -webkit-box-shadow:0px 0px 7px rgba(255, 255,255, 1);
+  box-shadow:0px 0px 7px rgba(255, 255,255, 1);
+}
+
+input#submitButton:focus {
+  -moz-box-shadow:0px 0px 7px rgba(255, 255,255, 0.75);
+  -webkit-box-shadow:0px 0px 7px rgba(255, 255,255, 0.75);
+  box-shadow:0px 0px 7px rgba(255, 255,255, 0.75);
+}
+  
+input#submitButton:active {
+  border-width:2px 1px 1px 2px;
+  font-size:20px;
+}
+
+.checkbox {
+  width: 19px;
+  height: 25px;
+  padding: 0 5px 0 0;
+  background: url(png/checkbox.png) no-repeat;
+  display: block;
+  clear: left;
+  float: center;
+}
+
+
