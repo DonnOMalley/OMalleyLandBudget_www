@@ -12,7 +12,7 @@ body {
 	width: 220px;
         height: 50px;
 	background-color: #EDF2F7;
-	background: url(png/down_arrow.png) no-repeat right;
+	background: url(../png/down_arrow.png) no-repeat right;
 }
 
 #inputArea input[type="text"], #inputArea textarea {
@@ -90,7 +90,7 @@ input#submitButton:active {
   width: 19px;
   height: 25px;
   padding: 0 5px 0 0;
-  background: url(png/checkbox.png) no-repeat;
+  background: url(../png/checkbox.png) no-repeat;
   display: block;
   clear: left;
   float: center;
