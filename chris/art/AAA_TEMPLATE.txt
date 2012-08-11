@@ -1,0 +1,18 @@
+<TABLE cellspacing="3" border=0 width=100%><TR><TD width='50%' nowrap valign='bottom' align='right'><B>
+
+(TITLE)
+
+</B></TD><TD nowrap valign='top' align='center'><U>
+
+$(COST)
+
+</U></TD></TR><tr><td colspan=2 align=center><center>
+
+(PAYPAL HTML)
+
+<center></td></tr><TR><TD colspan='2'>&nbsp;</TD></TR><TR><TD colspan='2'><P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+(DESCRIPTION)
+
+</P></TD></TR></TABLE>
+

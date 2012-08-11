@@ -15,6 +15,10 @@ Requires
 ***
 Changelog
 =========
+**2012-08-08 - DØ** : *v0.4* 
+* Added new directories for Jeni and Chris
+* Created php scripts to automatically scan art directory and build HTML Pages using support graphic formats and a .txt(html) file
+<br />
 **2012-07-29 - DØ** : *v0.3* 
 * Updated directory structure - simplified by removing sub directories
 * Added Mobile directory and updated pages to be better formatted for mobile
