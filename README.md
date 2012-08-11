@@ -15,15 +15,28 @@ Requires
 ***
 Changelog
 =========
-**2012-08-08 - DØ** : *v0.4* 
-* Added new directories for Jeni and Chris
-* Created php scripts to automatically scan art directory and build HTML Pages using support graphic formats and a .txt(html) file
+**2012-08-08 - DØ** : _v0.4_ <br />
+
+ * Added new directories for Jeni and Chris
+ * Created php scripts to automatically scan art directory and build HTML Pages using support graphic formats and a .txt(html) file
 <br />
-**2012-07-29 - DØ** : *v0.3* 
-* Updated directory structure - simplified by removing sub directories
-* Added Mobile directory and updated pages to be better formatted for mobile
-* Added directory for Chris that we will expand to use for him to have an art showcase.
-* Added sorting to createDebit combo boxes.
 <br />
-**2012-07-22 - DØ** : *v0.2* : Updated for migration to New Server and added new Home Page, cleaned up README.md and added more information.<br />
-**2012 - DØ** : *Initial Release(0.1)*
+
+**2012-07-29 - DØ** : _v0.3_ <br />
+
+ * Updated directory structure - simplified by removing sub directories
+ * Added Mobile directory and updated pages to be better formatted for mobile
+ * Added directory for Chris that we will expand to use for him to have an art showcase.
+ * Added sorting to createDebit combo boxes.
+<br />
+<br />
+
+**2012-07-22 - DØ** : _v0.2_ <br />
+
+ * Updated for migration to New Server 
+ * Added new Home Page
+ * Cleaned up README.md and added more information.
+<br />
+<br />
+
+**2012 - DØ** : _Initial Release : v0.1_
