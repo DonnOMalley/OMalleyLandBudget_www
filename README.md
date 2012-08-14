@@ -1,6 +1,6 @@
 OMalleyLandBudget Website (OMalleyLandBudget_www)
 =====================
-###### Latest Revision: **2012-07-29 - DØ** : *v0.3* ######
+###### Latest Revision: **2012-08-13 - DØ** : *v0.5* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to our home budget. 
@@ -15,6 +15,12 @@ Requires
 ***
 Changelog
 =========
+**2012-08-13 - DØ** : _v0.5_ <br />
+
+ * Added youtube link for Donn
+ * Added Front Porch Cameras and Alley camera (live feeds) to home page.
+<br />
+<br />
 **2012-08-08 - DØ** : _v0.4_ <br />
 
  * Added new directories for Jeni and Chris
