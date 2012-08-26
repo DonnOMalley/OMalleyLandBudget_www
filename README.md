@@ -25,11 +25,13 @@ Changelog
  * Updated README to reflect changes.
 <br />
 <br />
+
 **2012-08-13 - DØ** : _v0.5_ <br />
  * Added youtube link for Donn
  * Added Front Porch Cameras and Alley camera (live feeds) to home page.
 <br />
 <br />
+
 **2012-08-08 - DØ** : _v0.4_ <br />
  * Added new directories for Jeni and Chris
  * Created php scripts to automatically scan art directory and build HTML Pages using support graphic formats and a .txt(html) file
