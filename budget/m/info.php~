@@ -5,6 +5,9 @@
 
   <title>OMalleyLand Budget Spending Details - mobile</title>
   <?php 
+
+		$base_website = "http://www.omalleyland.com"
+
 	  list($m,$d,$y) = explode("/", date('m/d/Y')); 
 		if(isset($_POST['start_debit_month']) && isset($_POST['start_debit_year']) && isset($_POST['end_debit_month']) && isset($_POST['end_debit_year'])){
 			$startMonth = $_POST['start_debit_month'];
@@ -38,12 +41,12 @@
 </head>
 <body>
 	<CENTER>
-		<H1><a href="http://www.omalleyland.com">O'MalleyLand Budget</a></H1>
+		<H1><a href=<?php echo $base_website; ?>O'MalleyLand Budget</a></H1>
 		<h6>Best Viewed in Landscape</h6>
 		<table>
 		<tr>
 		<td>
-		<a href="http://www.omalleyland.com/m/budget/createDebit.php" target="_blank">Create New Debit(s)</a>
+		<a href=<?php echo $base_website . '/m/budget/createDebit.php'; ?> target="_blank">Create New Debit(s)</a>
 		</td>
 		<td>
 		<a href="http://www.omalleyland.com/m/budget/createParentCategory.php" target="_blank">Add New Category</a>

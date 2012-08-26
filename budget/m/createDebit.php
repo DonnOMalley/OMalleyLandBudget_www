@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Create Debit</title>
-<link rel="stylesheet" href="http://omalleyland.com/css/OMalleyLandBudget/createDebit.css" />
+<link rel="stylesheet" href="/budget/css/createDebit.css" />
 <script type="text/javascript">
 function checkAmount(strAmount)
 {
@@ -95,7 +95,7 @@ mysql_select_db("$db_name")or die("cannot select DB");
 	echo "<form name='createDebitForm' method='post' action='createDebit.php' onsubmit='return validateForm()'>";
 	
 	//get list of categories for combo box
-	$query_categories = "SELECT id, name FROM Categories WHERE parent_category_id IS NULL;";
+	$query_categories = "SELECT id, name FROM Categories WHERE parent_category_id IS NULL ORDER BY name asc;";
 	
 	//attempt query AND evaluate for success
 	if($result = mysql_query($query_categories)) {
@@ -178,7 +178,7 @@ mysql_select_db("$db_name")or die("cannot select DB");
 	}		
 ?>
 <br />Comment<br /><input type='text' name='comment' /></div>
-<br />Credit Card Purchase<div class="checkbox"><input type="checkbox" name="credit_card" value="Yes" width=250 /></div>
+<!--<br />Credit Card Purchase<div class="checkbox"><input type="checkbox" name="credit_card" value="Yes" width=250 /></div>-->
 <br />
 
 <input type='submit' id=submitButton value='Post Debit' />

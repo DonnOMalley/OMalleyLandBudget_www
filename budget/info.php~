@@ -310,15 +310,15 @@
 		<table>
 		<tr>
 		<td>
-		<a href="http://www.omalleyland.com/php/OMalleyLandBudget/createDebit.php" target="_blank">Create New Debit(s)</a>
+		<a href="http://www.omalleyland.com/budget/createDebit.php" target="_blank">Create New Debit(s)</a>
 		</td>
 		<td>
-		<a href="http://www.omalleyland.com/php/OMalleyLandBudget/createParentCategory.php" target="_blank">Add New Category</a>
+		<a href="http://www.omalleyland.com/budget/createParentCategory.php" target="_blank">Add New Category</a>
 		</td>
 		</table>
 		
 		
-		<form method="post" action="http://www.omalleyland.com/php/OMalleyLandBudget/index.php">
+		<form method="post" action="http://www.omalleyland.com/budget/info.php">
 			<table border=1>
 				<tr>
 					<td align="center"><b><u>Start Date</b></u></td>
@@ -534,7 +534,7 @@
 									$nextSortType = "asc";	
 								}	
 							?>
-							<td align="center"><u><b><a href="index.php?sortType=
+							<td align="center"><u><b><a href="info.php?sortType=
 								<?php 
 									if($sort=="") {
 										if ($sortType == "") {
@@ -550,7 +550,7 @@
 									echo "&start_debit_month=" . $startMonth . "&start_debit_year=" . $startYear .  "&end_debit_month=" . $endMonth . "&end_debit_year=" . $endYear
 								?>
 							">Debit Date</a></b></u></td>
-							<td align="center"><u><b><a href="index.php?sort=purchaser&sortType=
+							<td align="center"><u><b><a href="info.php?sort=purchaser&sortType=
 								<?php 
 									if($sort=="purchaser") {
 										echo $nextSortType;
@@ -561,7 +561,7 @@
 									echo "&start_debit_month=" . $startMonth . "&start_debit_year=" . $startYear .  "&end_debit_month=" . $endMonth . "&end_debit_year=" . $endYear
 								?>
 							">Purchaser</a></b></u></td>
-							<td align="center"><u><b><a href="index.php?sort=category&sortType=
+							<td align="center"><u><b><a href="info.php?sort=category&sortType=
 								<?php 
 									if($sort=="category") {
 										echo $nextSortType;
@@ -572,7 +572,7 @@
 									echo "&start_debit_month=" . $startMonth . "&start_debit_year=" . $startYear .  "&end_debit_month=" . $endMonth . "&end_debit_year=" . $endYear
 								?>
 							">Category</a></b></u></td>
-							<td align="center"><u><b><a href="index.php?sort=amount&sortType=
+							<td align="center"><u><b><a href="info.php?sort=amount&sortType=
 								<?php 
 									if($sort=="amount") {
 										echo $nextSortType;
@@ -583,7 +583,7 @@
 									echo "&start_debit_month=" . $startMonth . "&start_debit_year=" . $startYear .  "&end_debit_month=" . $endMonth . "&end_debit_year=" . $endYear
 								?>
 							">Amount</a></b></u></td>
-							<td align="center"><u><b><a href="index.php?sort=payee&sortType=
+							<td align="center"><u><b><a href="info.php?sort=payee&sortType=
 								<?php 
 									if($sort=="payee") {
 										echo $nextSortType;
@@ -595,7 +595,6 @@
 								?>
 							">Payee</a></b></u></td>
 							<td align="center"><u><b>Comment</b></u></td>
-							<td align="center"><u><b>Credit Card Purchase</b></u></td>
 						</TR>
 						<?php $con = mysql_connect("localhost","web_user","Cinderella");
 							if (!$con) {
@@ -609,11 +608,7 @@
 																						c.name, 
 																						d.amount, 
 																						s.name as payee,
-																						d.comment, 
-																						CASE d.creditCardPurchase
-																							WHEN '0' THEN 'N'
-																							ELSE 'Y'
-																						END AS credit_card 				 
+																						d.comment			 
 																		FROM Debits d 
 																		LEFT OUTER JOIN Categories c on d.category_id = c.id
 																		LEFT OUTER JOIN Purchasers p on p.id = d.purchaser_id
@@ -643,7 +638,7 @@
 
 							while($row = mysql_fetch_array($result)) {
 								echo "<tr align=top><td nowrap=nowrap>";
-								echo $row['debit_date'] . "</td><td>" . $row['purchaserName'] . "</td><td>" . $row['name'] . "</td><td>$" . $row['amount'] . "</td><td>" . $row['payee'] . "</td><td>" . $row['comment'] . "</td><td align=center>" . $row['credit_card'] . "</td>";
+								echo $row['debit_date'] . "</td><td>" . $row['purchaserName'] . "</td><td>" . $row['name'] . "</td><td>$" . $row['amount'] . "</td><td>" . $row['payee'] . "</td><td>" . $row['comment'] . "</td>";
 								echo "</tr>";
 							}
 
