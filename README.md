@@ -15,6 +15,12 @@ Requires
 ***
 Changelog
 =========
+**2012-08-29 - DØ** : _v0.7_ <br />
+ * Updated createDebit pages to sort Categories by Name
+ * Updated README to reflect changes.
+<br />
+<br />
+
 **2012-08-26 - DØ** : _v0.6_ <br />
  * Additional directory cleanup(removed duplicate css/png directories)
  * Updated references for directory changes
