@@ -95,7 +95,7 @@ mysql_select_db("$db_name")or die("cannot select DB");
 	echo "<form name='createDebitForm' method='post' action='createDebit.php' onsubmit='return validateForm()'>";
 	
 	//get list of categories for combo box
-	$query_categories = "SELECT id, name FROM Categories WHERE parent_category_id IS NULL;";
+	$query_categories = "SELECT id, name FROM Categories WHERE parent_category_id IS NULL ORDER BY name ASC;";
 	
 	//attempt query AND evaluate for success
 	if($result = mysql_query($query_categories)) {
