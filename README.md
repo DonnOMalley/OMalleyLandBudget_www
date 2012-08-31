@@ -1,6 +1,6 @@
 OMalleyLand Website
 =====================
-###### Latest Revision: **2012-08-26 - DØ** : *v0.6* ######
+###### Latest Revision: **2012-08-30 - DØ** : *v0.7.5* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to only our home budget. 
@@ -15,6 +15,13 @@ Requires
 ***
 Changelog
 =========
+**2012-08-30 - DØ** : _v0.7.5_ <br />
+ * Added budget.php(desktop) for displaying budget totals by category for comparison with budget/spent/remaining values
+ * Cleaned up Desktop version of info.php replacing OMalleyLandBudget hard coded references with $db_name variable references
+ * Updated README to reflect changes.
+<br />
+<br />
+
 **2012-08-29 - DØ** : _v0.7_ <br />
  * Updated createDebit pages to sort Categories by Name
  * Updated README to reflect changes.

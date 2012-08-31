@@ -6,7 +6,12 @@
   <title>OMalleyLand Budget</title>
   
 <?php 
-  list($m,$d,$y) = explode("/", date('m/d/Y')); 
+	$host="localhost"; // Host name 
+	$username="web_user"; // Mysql username 
+	$password="Cinderella"; // Mysql password 
+	$db_name="OMalleyLandBudget"; // Database name 
+	
+	list($m,$d,$y) = explode("/", date('m/d/Y')); 
 	if(isset($_POST['start_debit_month']) && isset($_POST['start_debit_year']) && isset($_POST['end_debit_month']) && isset($_POST['end_debit_year'])){
 		$startMonth = $_POST['start_debit_month'];
 		$startYear = $_POST['start_debit_year'];
@@ -36,12 +41,12 @@
 	$startDate = $startYear . "-" . $startMonth . "-1";
 	$endDate = $endYear . "-" . $endMonth . "-1";
 	
-	$con = mysql_connect("localhost","web_user","Cinderella");
+	$con = mysql_connect($host,$username,$password);	
 	if (!$con) {
 		die('Could not connect: ' . mysql_error());
 	}
 	
-	mysql_select_db("OMalleyLandBudget", $con);    
+	mysql_select_db($db_name, $con);    
     
   echo "
   	<script type='text/javascript' src='https://www.google.com/jsapi'></script>
@@ -54,8 +59,8 @@
 			 
 			 //Only get list of categories actually used to cut down on processing time
 			$result = mysql_query("SELECT DISTINCT c.name AS name
-									FROM OMalleyLandBudget.Debits d
-									JOIN OMalleyLandBudget.Categories c ON c.id = d.category_id
+									FROM " . $db_name . ".Debits d
+									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE d.debit_date > DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL - 3 MONTH)), INTERVAL 1 DAY)
 									ORDER BY c.name ASC");
 									
@@ -75,8 +80,8 @@
 			$result = mysql_query("SELECT DATE_FORMAT(d.debit_date, '%M %Y') AS Month,
 									c.name AS Category,
 									sum(d.Amount) AS Total_Spent
-									FROM OMalleyLandBudget.Debits d
-									JOIN OMalleyLandBudget.Categories c ON c.id = d.category_id
+									FROM " . $db_name . ".Debits d
+									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE d.debit_date >= DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL - 3 MONTH)), INTERVAL 1 DAY)
 									GROUP BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name
                     				ORDER BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name ASC");									
@@ -153,8 +158,8 @@
 			 
 			 //Only get list of categories actually used to cut down on processing time
 			$result = mysql_query("SELECT DISTINCT c.name AS name
-									FROM OMalleyLandBudget.Debits d
-									JOIN OMalleyLandBudget.Categories c ON c.id = d.category_id
+									FROM " . $db_name . ".Debits d
+									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))
 									ORDER BY c.name ASC");
 									
@@ -174,8 +179,8 @@
 			$result = mysql_query("SELECT DATE_FORMAT(d.debit_date, '%M %Y') AS Month,
 									c.name AS Category,
 									sum(d.Amount) AS Total_Spent
-									FROM OMalleyLandBudget.Debits d
-									JOIN OMalleyLandBudget.Categories c ON c.id = d.category_id
+									FROM " . $db_name . ".Debits d
+									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))
 									GROUP BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name
                     				ORDER BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name ASC");									
@@ -254,7 +259,7 @@
 		 		var data1 = google.visualization.arrayToDataTable([";
 		        
 	$result = mysql_query("SELECT c.name, sum(d.amount) as totalAmount
-															FROM OMalleyLandBudget.Debits d JOIN OMalleyLandBudget.Categories c on d.category_id = c.id
+															FROM " . $db_name . ".Debits d JOIN " . $db_name . ".Categories c on d.category_id = c.id
 															WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))
 															GROUP BY c.name");
 
@@ -278,7 +283,7 @@
 		var data2 = google.visualization.arrayToDataTable([";
 		        
 	$result = mysql_query("SELECT c.name, count(*) as count
-												FROM OMalleyLandBudget.Debits d JOIN OMalleyLandBudget.Categories c on d.category_id = c.id
+												FROM " . $db_name . ".Debits d JOIN " . $db_name . ".Categories c on d.category_id = c.id
 												WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))
 												GROUP BY c.name");
 
@@ -384,14 +389,14 @@
 
 				    <select name="start_debit_year">
 						<?php
-				    	$con = mysql_connect("localhost","web_user","Cinderella");
+				    	$con = mysql_connect($host,$username,$password);	
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
 
-							mysql_select_db("OMalleyLandBudget", $con);    
+							mysql_select_db($db_name, $con);    
 						        
-							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM Debits ORDER BY debit_date DESC;");
+							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM " . $db_name . ".Debits ORDER BY debit_date DESC;");
 																	
 							while($row = mysql_fetch_array($result)) {
 								$year = $row['Years'];
@@ -459,14 +464,14 @@
 				    </select>
 				    <select name="end_debit_year">
 						<?php
-				    	$con = mysql_connect("localhost","web_user","Cinderella");
+				    		$con = mysql_connect($host,$username,$password);	
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
 
-							mysql_select_db("OMalleyLandBudget", $con);    
+							mysql_select_db($db_name, $con);    
 						        
-							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM Debits ORDER BY debit_date DESC;");
+							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM " . $db_name . ".Debits ORDER BY debit_date DESC;");
 																	
 							while($row = mysql_fetch_array($result)) {
 								$year = $row['Years'];
@@ -488,15 +493,15 @@
 		</form>
 		<h4>
 			<?php 
-				$con = mysql_connect("localhost","web_user","Cinderella");
+				$con = mysql_connect($host,$username,$password);	
 				if (!$con) {
 					die('Could not connect: ' . mysql_error());
 				}
 			
-				mysql_select_db("OMalleyLandBudget", $con);
+				mysql_select_db($db_name, $con);
 			
 				$result = mysql_query("SELECT count(d.ID) as record_count 
-																		FROM OMalleyLandBudget.Debits d
+																		FROM " . $db_name . ".Debits d
 																		WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))");
 			
 				$transactionCount=0;
@@ -505,7 +510,7 @@
 				}
 			
 				$result = mysql_query("SELECT sum(d.amount) as total_spent 
-																		FROM OMalleyLandBudget.Debits d
+																		FROM " . $db_name . ".Debits d
 																		WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))");
 			
 				$totalSpent=0;
@@ -596,12 +601,13 @@
 							">Payee</a></b></u></td>
 							<td align="center"><u><b>Comment</b></u></td>
 						</TR>
-						<?php $con = mysql_connect("localhost","web_user","Cinderella");
+						<?php 
+							$con = mysql_connect($host,$username,$password);	
 							if (!$con) {
 								die('Could not connect: ' . mysql_error());
 							}
 
-							mysql_select_db("OMalleyLandBudget", $con);
+							mysql_select_db($db_name, $con);
 							
 							$sqlStr = "SELECT DATE_FORMAT(d.debit_date, '%M %e, %Y') as debit_date,
 																						CONCAT_WS(' ',p.firstName,p.lastName) AS purchaserName, 
@@ -609,10 +615,10 @@
 																						d.amount, 
 																						s.name as payee,
 																						d.comment			 
-																		FROM Debits d 
-																		LEFT OUTER JOIN Categories c on d.category_id = c.id
-																		LEFT OUTER JOIN Purchasers p on p.id = d.purchaser_id
-																		LEFT OUTER JOIN Stores s on s.id = d.store_id
+																		FROM " . $db_name . ".Debits d 
+																		LEFT OUTER JOIN " . $db_name . ".Categories c on d.category_id = c.id
+																		LEFT OUTER JOIN " . $db_name . ".Purchasers p on p.id = d.purchaser_id
+																		LEFT OUTER JOIN " . $db_name . ".Stores s on s.id = d.store_id
 																		WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))";
 							
 							$sqlStr = $sqlStr . " ORDER BY ";
