@@ -15,6 +15,13 @@ Requires
 ***
 Changelog
 =========
+**2012-09-03 - DØ** : _v0.8_ <br />
+ * Added Additional validation(validate_form) to the createDebit.php page (desktop/mobile) to ensure all values are filled in
+ * Created Mobile version of budget.php page (info only)
+ * Added Budget graph to mobile graph.php page.
+ * Updated README to reflect changes.
+<br />
+<br />
 **2012-08-30 - DØ** : _v0.7.5_ <br />
  * Added budget.php(desktop) for displaying budget totals by category for comparison with budget/spent/remaining values
  * Cleaned up Desktop version of info.php replacing OMalleyLandBudget hard coded references with $db_name variable references

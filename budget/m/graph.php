@@ -306,6 +306,93 @@
 		
 		var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
 		chart2.draw(data2, options2);
+		
+		
+	/////////////////////////////////
+			        
+			        
+ 			var budgetDataColumnChart = google.visualization.arrayToDataTable([['Category','Budget','Spent','Balance']";
+		 
+		$result = mysql_query("SELECT  c.name as Category
+										        ,CAST(IFNULL(Avg_Amount,0) AS DECIMAL(10,2)) as Monthly_Budget
+										        ,IFNULL(CurrentSpending.Total_Spent, 0) AS Current_Monthly_Spending
+										        ,CAST(IFNULL(Avg_Amount,0) AS DECIMAL(10,2)) - IFNULL(CurrentSpending.Total_Spent, 0) AS Monthly_Balance_Remaining
+										FROM (
+										    SELECT   Avg(Total_Spent) as Avg_Amount
+										            ,category_id 
+										    FROM (  SELECT  DATE_FORMAT(`Debits`.`debit_date`, '%m') AS debit_month   
+										                    ,DATE_FORMAT(`Debits`.`debit_date`, '%Y') AS debit_year 
+										                    ,`Debits`.`category_id`
+										                    ,SUM(`Debits`.`amount`) AS Total_Spent
+										            FROM `".$db_name."`.`Debits`
+										            WHERE debit_date < DATE_FORMAT(now(), '%Y-%m-01 00:00:00')
+										            GROUP BY DATE_FORMAT(`Debits`.`debit_date`, '%Y')
+										                     ,DATE_FORMAT(`Debits`.`debit_date`, '%m') 
+										                     ,`Debits`.`category_id` 
+										        ) MonthlyCategoryTotals
+										    GROUP BY category_id 
+										) Averages
+										JOIN `" . $db_name . "`.`Categories` c on c.id = Averages.category_id
+										LEFT OUTER JOIN (  SELECT   SUM(`Debits`.`amount`) AS Total_Spent
+										                                ,`Debits`.`category_id`
+										                        FROM `" . $db_name . "`.`Debits`
+										                        WHERE debit_date >= DATE_FORMAT(now(), '%Y-%m-01 00:00:00')
+										                        GROUP BY `Debits`.`category_id` 
+										                ) CurrentSpending ON CurrentSpending.category_id = Averages.category_id");									
+		
+		while($row = mysql_fetch_array($result)) {
+			echo ",['" . 	$row['Category'] . "'," . 
+								$row['Monthly_Budget'] . "," . 
+								$row['Current_Monthly_Spending'] . "," . 
+								$row['Monthly_Balance_Remaining'] . "]";
+		}    
+		
+		$result = mysql_query("SELECT  SUM(Monthly_Budget) AS Total_Monthly_Budget
+										        ,SUM(Current_Monthly_Spending) AS Total_Monthly_Spending
+										        ,SUM(Monthly_Balance_Remaining) AS Total_Balance_Remaining
+										FROM (  SELECT  c.name as Category
+										                ,CAST(IFNULL(Avg_Amount,0) AS DECIMAL(10,2)) as Monthly_Budget
+										                ,IFNULL(CurrentSpending.Total_Spent, 0) AS Current_Monthly_Spending
+										                ,CAST(IFNULL(Avg_Amount,0) AS DECIMAL(10,2)) - IFNULL(CurrentSpending.Total_Spent, 0) AS Monthly_Balance_Remaining
+										        FROM (
+										            SELECT   Avg(Total_Spent) as Avg_Amount
+										                    ,category_id 
+										            FROM (  SELECT  DATE_FORMAT(`Debits`.`debit_date`, '%m') AS debit_month   
+										                            ,DATE_FORMAT(`Debits`.`debit_date`, '%Y') AS debit_year 
+										                            ,`Debits`.`category_id`
+										                            ,SUM(`Debits`.`amount`) AS Total_Spent
+										                    FROM `OMalleyLandBudget`.`Debits`
+										                    WHERE debit_date < DATE_FORMAT(now(), '%Y-%m-01 00:00:00')
+										                    GROUP BY DATE_FORMAT(`Debits`.`debit_date`, '%Y')
+										                             ,DATE_FORMAT(`Debits`.`debit_date`, '%m') 
+										                             ,`Debits`.`category_id` 
+										                ) MonthlyCategoryTotals
+										            GROUP BY category_id 
+										        ) Averages
+										        RIGHT OUTER JOIN `OMalleyLandBudget`.`Categories` c on c.id = Averages.category_id
+										        LEFT OUTER JOIN (  SELECT   SUM(`Debits`.`amount`) AS Total_Spent
+										                                        ,`Debits`.`category_id`
+										                                FROM `OMalleyLandBudget`.`Debits`
+										                                WHERE debit_date >= DATE_FORMAT(now(), '%Y-%m-01 00:00:00')
+										                                GROUP BY `Debits`.`category_id` 
+										                        ) CurrentSpending ON CurrentSpending.category_id = Averages.category_id
+										    ) Totals");
+
+		while($row = mysql_fetch_array($result)) {
+			echo ",['Budget Totals'," . 
+						$row['Total_Monthly_Budget'] . "," . 
+						$row['Total_Monthly_Spending'] . "," . 
+						$row['Total_Balance_Remaining'] . "]";
+		}
+		 
+		echo "]);
+		        var budgetOptionsColumnChart = {
+		          title: 'Budget/Spending By Category',
+		          hAxis: {title: 'Category', titleTextStyle: {color: 'red'}}
+		        };
+		
+		        var budgetColumnChart = new google.visualization.ColumnChart(document.getElementById('budgetColumnChart_div'));
+		        budgetColumnChart.draw(budgetDataColumnChart, budgetOptionsColumnChart);
 		}
 		</script>";
     
@@ -530,6 +617,7 @@
 		<TABLE>
 			<TR>
 				<TD valign="top">
+					<div id='budgetColumnChart_div' style='width: 1024px; height: 600px;'></div>
 					<div id='ColumnChart_div' style='width: 1024px; height: 600px;'></div>
 					<div id='ColumnChart2_div' style='width: 1024px; height: 600px;'></div>
 					<div id='chart_div1' style='width: 1024px; height: 600px;'></div>
