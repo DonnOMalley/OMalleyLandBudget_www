@@ -1,6 +1,6 @@
 OMalleyLand Website
 =====================
-###### Latest Revision: **2012-08-30 - DØ** : *v0.7.5* ######
+###### Latest Revision: **2012-09-03 - DØ** : *v0.8.1* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to only our home budget. 
@@ -15,6 +15,11 @@ Requires
 ***
 Changelog
 =========
+**2012-09-03 - DØ** : _v0.8.1_ <br />
+ * Reduced size of graphs on mobile graph.php page
+ * Updated README to reflect changes.
+<br />
+<br />
 **2012-09-03 - DØ** : _v0.8_ <br />
  * Added Additional validation(validate_form) to the createDebit.php page (desktop/mobile) to ensure all values are filled in
  * Created Mobile version of budget.php page (info only)

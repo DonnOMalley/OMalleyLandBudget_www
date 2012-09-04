@@ -617,11 +617,11 @@
 		<TABLE>
 			<TR>
 				<TD valign="top">
-					<div id='budgetColumnChart_div' style='width: 1024px; height: 600px;'></div>
-					<div id='ColumnChart_div' style='width: 1024px; height: 600px;'></div>
-					<div id='ColumnChart2_div' style='width: 1024px; height: 600px;'></div>
-					<div id='chart_div1' style='width: 1024px; height: 600px;'></div>
-					<div id='chart_div2' style='width: 1024px; height: 600px;'></div>
+					<div id='budgetColumnChart_div' style='width: 768px; height: 450px;'></div>
+					<div id='ColumnChart_div' style='width: 768px; height: 450px;'></div>
+					<div id='ColumnChart2_div' style='width: 768px; height: 450px;'></div>
+					<div id='chart_div1' style='width: 768px; height: 450px;'></div>
+					<div id='chart_div2' style='width: 768px; height: 450px;'></div>
 				</TD>
 			</TR>
 		</TABLE>
