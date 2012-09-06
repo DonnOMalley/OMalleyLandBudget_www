@@ -1,6 +1,6 @@
 OMalleyLand Website
 =====================
-###### Latest Revision: **2012-09-03 - DØ** : *v0.8.1* ######
+###### Latest Revision: **2012-09-05 - DØ** : *v0.8.5* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to only our home budget. 
@@ -15,6 +15,12 @@ Requires
 ***
 Changelog
 =========
+**2012-09-05 - DØ** : _v0.8.5_ <br />
+ * Added Desktop/mobile page for creating new payees
+ * Added support for special characters on inserting payees/categories/debits
+ * Updated more Addresses/un/pw references to be conisistent
+<br />
+<br />
 **2012-09-03 - DØ** : _v0.8.1_ <br />
  * Reduced size of graphs on mobile graph.php page
  * Updated README to reflect changes.

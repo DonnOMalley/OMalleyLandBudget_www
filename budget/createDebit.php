@@ -33,9 +33,16 @@ function validateForm()
 {  
 	var amount=document.forms["createDebitForm"]["amount"].value;
 	var categoryId=document.forms["createDebitForm"]["category_id"].value;
+	var payeeId=document.forms["createDebitForm"]["store_id"].value;
+	var purchaserId=document.forms["createDebitForm"]["purchaser_id"].value;
   
 	if(categoryId==null || categoryId == 0) {
 		alert("Category Must Be Selected");
+		return false;
+  }
+  
+	if(purchaserId==null || purchaserId == 0) {
+		alert("A Purchaser Must Be Selected");
 		return false;
   }
 		
@@ -47,6 +54,11 @@ function validateForm()
   var strAmount = amount.toString(); 
   if (!checkAmount(strAmount)) {
 		alert("Invalid Amount Entered. Amount must be in the form of #.## with up to 6 digits preceeding the decimal place");
+		return false;
+  }
+  
+	if(payeeId==null || payeeId == 0) {
+		alert("A Payee Must Be Selected");
 		return false;
   }
 }
@@ -83,7 +95,7 @@ mysql_select_db("$db_name")or die("cannot select DB");
 			$credit_card = 0;
 		}
 		
-		$sql = "INSERT into Debits (debit_date, category_id, amount, comment, creditCardPurchase, purchaser_id, store_id) VALUES ('$debit_date', '$category_id', '$amount', '$comment', '$credit_card', '$purchaser_id', '$store_id')";
+		$sql = "INSERT into Debits (debit_date, category_id, amount, comment, creditCardPurchase, purchaser_id, store_id) VALUES ('$debit_date', '$category_id', '$amount', '" . mysql_real_escape_string($comment) . "', '$credit_card', '$purchaser_id', '$store_id')";
 	
 		if(mysql_query($sql)) {
 			echo "<h1>DEBIT ENTERED</H1>";

@@ -18,7 +18,7 @@
 			mysql_select_db("$db_name")or die("cannot select DB");
 
 			// Insert data into mysql 
-			$sql="INSERT INTO $tbl_name(name)VALUES('$name')";
+			$sql="INSERT INTO $tbl_name(name)VALUES('" . mysql_real_escape_string($name) . "')";
 			$result=mysql_query($sql);
 
 			// if successfully insert data into database, displays message "Successful". 

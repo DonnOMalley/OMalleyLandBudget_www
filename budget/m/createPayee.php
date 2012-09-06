@@ -6,7 +6,7 @@ $host="localhost"; // Host name
 $username="web_user"; // Mysql username 
 $password="Cinderella"; // Mysql password 
 $db_name="OMalleyLandBudget"; // Database name 
-$tbl_name="Categories"; // Table name
+$tbl_name="Stores"; // Table name
 
 //has the form been submitted?
 if(isset($_POST['name'])) {
@@ -23,11 +23,11 @@ if(isset($_POST['name'])) {
 
 	// if successfully insert data into database, displays message "Successful". 
 	if($result){
-		echo "Successfully Added Category: " . $name . "<br />";
+		echo "Successfully Added Payee: " . $name . "<br />";
 	}
 
 	else {
-		echo "ERROR ADDING CATEGORY";
+		echo "ERROR ADDING Payee";
 	}
 
 	// close connection 
@@ -36,7 +36,7 @@ if(isset($_POST['name'])) {
 
 ?>
 
-<form action="createParentCategory.php" method="post">
+<form action="createPayee.php" method="post">
 Name: <input type="text" name="name" />
 <input type="submit" />
 </form>
