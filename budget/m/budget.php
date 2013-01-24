@@ -36,6 +36,14 @@
 								$sortType = $_GET["sortType"];
 								$href = "budget.php?sort=Category&sortType=";
 								if($sort=='Category') {
+									if($sortType=='asc') {
+										$href = $href . "desc";
+									}
+									else {
+										$href = $href . "asc";
+									}
+								}
+								else if($sort=='') { 			//by default, the page loads with sorting by Category asc.
 									$href = $href . "desc";
 								}
 								else {
@@ -48,9 +56,14 @@
 								
 								$href = "budget.php?sort=Monthly_Budget&sortType=";
 								if($sort=="Monthly_Budget") {
-									$href = $href . "desc";
+									if($sortType=='asc') {
+										$href = $href . "desc";
+									}
+									else {
+										$href = $href . "asc";
+									}
 								}
-								else {
+								else { 			
 									$href = $href . "asc";
 								}
 								echo '<td align="center"><u><b>
@@ -60,9 +73,14 @@
 								
 								$href = "budget.php?sort=Current_Monthly_Spending&sortType=";
 								if($sort=="Current_Monthly_Spending") {
-									$href = $href . "desc";
+									if($sortType=='asc') {
+										$href = $href . "desc";
+									}
+									else {
+										$href = $href . "asc";
+									}
 								}
-								else {
+								else { 			
 									$href = $href . "asc";
 								}
 								echo '<td align="center"><u><b>
@@ -72,9 +90,14 @@
 								
 								$href = "budget.php?sort=Monthly_Balance_Remaining&sortType=";
 								if($sort=="Monthly_Balance_Remaining") {
-									$href = $href . "desc";
+									if($sortType=='asc') {
+										$href = $href . "desc";
+									}
+									else {
+										$href = $href . "asc";
+									}
 								}
-								else {
+								else { 			
 									$href = $href . "asc";
 								}
 								echo '<td align="center"><u><b>
@@ -119,6 +142,11 @@
 															                ) CurrentSpending ON CurrentSpending.category_id = Averages.category_id) TBL";
 							if($sort!="") {
 								$strSQL = $strSQL . " ORDER BY " . $sort . " " . $sortType;
+							}
+							else {
+								$strSQL = $strSQL . " ORDER BY Category ASC";
+								$sort = "Category";
+								$sortType = "asc";
 							}
 							
 							$result = mysql_query($strSQL);

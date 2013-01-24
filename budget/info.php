@@ -84,7 +84,7 @@
 									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE d.debit_date >= DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL - 3 MONTH)), INTERVAL 1 DAY)
 									GROUP BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name
-                    				ORDER BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name ASC");									
+                    				ORDER BY DATE_FORMAT(d.debit_date, '%Y') ASC, DATE_FORMAT(d.debit_date, '%m') ASC, c.name ASC");									
 			
 			$prevMonth = '';
 			$i = 0;
@@ -183,7 +183,7 @@
 									JOIN " . $db_name . ".Categories c ON c.id = d.category_id
 									WHERE ((d.debit_date >= '" . $startDate . "') And (d.debit_date < '" . $endDate . "'))
 									GROUP BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name
-                    				ORDER BY DATE_FORMAT(d.debit_date, '%m %Y'), c.name ASC");									
+                    				ORDER BY DATE_FORMAT(d.debit_date, '%Y') ASC, DATE_FORMAT(d.debit_date, '%m') ASC, c.name ASC");									
 			
 			$prevMonth = '';
 			$i = 0;
@@ -386,6 +386,7 @@
 						?>
 				    </select>
 				    
+						/ 1 / 
 
 				    <select name="start_debit_year">
 						<?php
@@ -399,10 +400,14 @@
 							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM " . $db_name . ".Debits ORDER BY debit_date DESC;");
 																	
 							while($row = mysql_fetch_array($result)) {
-								$year = $row['Years'];
-								echo "<option value='" . $year . "'>" . $year . "</option>";
-			
-							}       
+								$year = $row['Years'];								
+								echo "<option value='" . $year . "'";
+								if($year==$startYear) {
+									echo " selected=selected";
+								}
+								echo ">" . $year . "</option>";
+							}    
+
 							mysql_close($con);
 						?>
 				    </select>					
@@ -462,6 +467,9 @@
 							}
 						?>
 				    </select>
+				    
+						/ 1 / 
+
 				    <select name="end_debit_year">
 						<?php
 				    		$con = mysql_connect($host,$username,$password);	
@@ -472,12 +480,20 @@
 							mysql_select_db($db_name, $con);    
 						        
 							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM " . $db_name . ".Debits ORDER BY debit_date DESC;");
-																	
+									
+							$showNextYear = true;								
 							while($row = mysql_fetch_array($result)) {
 								$year = $row['Years'];
-								echo "<option value='" . $year . "'>" . $year . "</option>";			
+								echo "<option value='" . $year . "'";
+								if($year==$endYear) {
+									echo " selected=selected";
+								}
+								echo ">" . $year . "</option>";	
+								if($year==($startYear + 1)) {
+									$showNextYear = false;
+								}	
 							}       
-							if($m==12) {
+							if($showNextYear && $m==12) {
 								$year = $year + 1;
 								echo "<option value='" . $year . "'>" . $year . "</option>";									
 							}

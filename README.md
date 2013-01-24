@@ -1,6 +1,6 @@
 OMalleyLand Website
 =====================
-###### Latest Revision: **2012-09-05 - DØ** : *v0.8.5* ######
+###### Latest Revision: **2013-01-24 - DØ** : *v0.9* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to only our home budget. 
@@ -15,6 +15,13 @@ Requires
 ***
 Changelog
 =========
+**2013-01-24 - DØ** : _v0.9_ <br />
+ * Improved static/dynamic sorting for budget, graph and info pages (mobile & desktop versions)
+ * Updated date sorting for graphs.
+ * UI Additions for clarification
+ * Updated logic for date drop downs and year roll overs(December => January)
+<br />
+<br />
 **2012-09-05 - DØ** : _v0.8.5_ <br />
  * Added Desktop/mobile page for creating new payees
  * Added support for special characters on inserting payees/categories/debits

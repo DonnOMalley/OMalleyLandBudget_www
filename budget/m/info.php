@@ -121,6 +121,7 @@
 						?>
 				    </select>
 				    
+						/ 1 / 
 
 				    <select name="start_debit_year">
 						<?php
@@ -134,10 +135,14 @@
 							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM Debits ORDER BY debit_date DESC;");
 																	
 							while($row = mysql_fetch_array($result)) {
-								$year = $row['Years'];
-								echo "<option value='" . $year . "'>" . $year . "</option>";
-			
-							}       
+								$year = $row['Years'];								
+								echo "<option value='" . $year . "'";
+								if($year==$startYear) {
+									echo " selected=selected";
+								}
+								echo ">" . $year . "</option>";
+							}  
+   
 							mysql_close($con);
 						?>
 				    </select>					
@@ -197,6 +202,9 @@
 							}
 						?>
 				    </select>
+				    
+						/ 1 / 
+
 				    <select name="end_debit_year">
 						<?php
 				    	$con = mysql_connect($host,$username,$password);
@@ -207,12 +215,20 @@
 							mysql_select_db($db_name, $con);    
 						        
 							$result = mysql_query("SELECT DISTINCT YEAR(debit_date) AS Years FROM Debits ORDER BY debit_date DESC;");
-																	
+									
+							$showNextYear = true;								
 							while($row = mysql_fetch_array($result)) {
 								$year = $row['Years'];
-								echo "<option value='" . $year . "'>" . $year . "</option>";			
+								echo "<option value='" . $year . "'";
+								if($year==$endYear) {
+									echo " selected=selected";
+								}
+								echo ">" . $year . "</option>";	
+								if($year==($startYear + 1)) {
+									$showNextYear = false;
+								}	
 							}       
-							if($m==12) {
+							if($showNextYear && $m==12) {
 								$year = $year + 1;
 								echo "<option value='" . $year . "'>" . $year . "</option>";									
 							}
