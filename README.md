@@ -15,6 +15,11 @@ Requires
 ***
 Changelog
 =========
+**2013-01-27 - DØ** : _v0.9.1_ <br />
+ * Added payment budget calculator based on payment/savings amounts - Same for desktop & mobile
+ * ^^Still Need to fix the Catgory and Pay Period Budget Column Sorting (or Remove)
+<br />
+<br />
 **2013-01-24 - DØ** : _v0.9_ <br />
  * Improved static/dynamic sorting for budget, graph and info pages (mobile & desktop versions)
  * Updated date sorting for graphs.
