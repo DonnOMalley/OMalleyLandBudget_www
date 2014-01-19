@@ -1,6 +1,6 @@
 OMalleyLand Website
 =====================
-###### Latest Revision: **2013-01-24 - DØ** : *v0.9* ######
+###### Latest Revision: **2014-01-19 - DØ** : *v0.9* ######
 This is the OMalleyLand Home Page.<br />
 We are OMalleyLand LLC as well as the O'Malley Family.<br />
 This site is currently limited to only our home budget. 
@@ -15,6 +15,19 @@ Requires
 ***
 Changelog
 =========
+**2014-01-19 - DØ** : _v1.0.0_ <br />
+ * Updated all php mysql calls for mysqli
+ * Modified graphs for including or omitting bills for better human analysis on the fly
+ * Improved and cleaned up includes for use across all files
+ * Created graphs pages for linking from other pages - Same pages used for mobile or desktop links
+ * Cleaned up all queries to use constants from database include file
+ * Added logging capabilities and implemented some logging
+ * Resolved various date issues
+<br />
+	Logging implementation will grow as files are updated and troubleshooting occurs.
+	Database References are sterilized to eliminate the specifics to my MySQL DB
+<br />
+<br />
 **2013-01-27 - DØ** : _v0.9.1_ <br />
  * Added payment budget calculator based on payment/savings amounts - Same for desktop & mobile
  * ^^Still Need to fix the Catgory and Pay Period Budget Column Sorting (or Remove)
