@@ -54,7 +54,20 @@
 			<td>				
 				<?php
 					date_default_timezone_set('America/Chicago');
-					echo "<input type='date' name='debit_date' id='debit_date' required value='" . date('Y-m-d') . "' />";
+					list($m,$d,$y) = explode("/", date('m/dd/Y')); 
+					$minDate = "";
+					if($m==1) {
+						$minDate = ($y - 1) . "-12-01";
+					}
+					else {
+						if($m < 11) {
+						$minDate = $y . "-0" . ($m-1) . "-01";
+						}
+						else {
+						$minDate = $y . "-" . ($m-1) . "-01";
+						}
+					}
+					echo "<input type='date' name='debit_date' id='debit_date' min='" . $minDate . "' required value='" . date('Y-m-d') . "'/>";
 				?>
 			</td>
 		</tr>
@@ -156,7 +169,7 @@
 		<tr>
 			<th align=right>Amount:</th>
 			<td>
-				<b>$</b><input type='number' name='amount' required min='0.01' max='9999.99'/>
+				<b>$</b><input type='number' name='amount' required min='0.01' max='9999.99' step="0.01"/>
 			</td>
 		</tr>
 		<tr>
