@@ -766,7 +766,7 @@
 								}
 								echo "&start_debit_month=" . $startMonth . "&start_debit_year=" . $startYear .  "&end_debit_month=" . $endMonth . "&end_debit_year=" . $endYear;
 								echo "'>Amount</a></b></u></td>";
-								echo "<td align=center><u><b><a href='nfo.php?sort=payee&sortType=";
+								echo "<td align=center><u><b><a href='info.php?sort=payee&sortType=";
 								if($sort=="payee") {
 									echo $nextSortType;
 								} 
